@@ -16,3 +16,14 @@ function loadTasks() {
 function saveTasks() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
+function renderTasks() {
+    listOfTasks.innerHTML = "";
+    tasks.forEach(task => {
+        const listItem = document.createElement("li");
+        listItem.dataset.id = task.id;
+    })
+}
+
+loadTasks();
+renderTasks();
