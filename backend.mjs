@@ -29,13 +29,29 @@ function renderTasks() {
         checkbox.addEventListener("change", toggleTaskCompletion);
         listItem.appendChild(checkbox);
 
-        
+        const taskText = document.createElement("span");
+        taskText.textContent = task.text;
+        if (task.completed) {
+            taskText.style.textDecoration = "line-through";
+        }
+        listItem.appendChild(taskText);
+
+        const editTaskButton = document.createElement("button");
+        editTaskButton.textContent = "Edit";
+        editTaskButton.addEventListener("click", editTask);
+        listItem.appendChild(editTaskButton);
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.addEventListener("click", deleteTask);
+        listItem.appendChild(deleteButton);
+        listOfTasks.appendChild(listItem);
     });
 }
 
 function addTask(event) {
     event.preventDefault();
-    const text = inputTask.ariaValueMax.trim();
+    const text = inputTask.value.trim();
     if (text === "") {
         return;
     }
@@ -50,6 +66,7 @@ function addTask(event) {
     todoForm.reset();
 }
 
-todoForm.addEventListener("submit", addTask);
+
+
 loadTasks();
 renderTasks();
