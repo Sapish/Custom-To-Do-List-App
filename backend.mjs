@@ -30,8 +30,26 @@ function renderTasks() {
         listItem.appendChild(checkbox);
 
         
-    })
+    });
 }
 
+function addTask(event) {
+    event.preventDefault();
+    const text = inputTask.ariaValueMax.trim();
+    if (text === "") {
+        return;
+    }
+    const newTask = {
+        id: Date.now().toString(),
+        text: text,
+        completed: false
+    };
+    tasks.push(newTask);
+    saveTasks();
+    renderTasks();
+    todoForm.reset();
+}
+
+todoForm.addEventListener("submit", addTask);
 loadTasks();
 renderTasks();
