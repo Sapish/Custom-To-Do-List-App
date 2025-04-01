@@ -22,6 +22,14 @@ function renderTasks() {
     tasks.forEach(task => {
         const listItem = document.createElement("li");
         listItem.dataset.id = task.id;
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = task.completed;
+        checkbox.addEventListener("change", toggleTaskCompletion);
+        listItem.appendChild(checkbox);
+
+        
     })
 }
 
