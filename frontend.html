@@ -8,13 +8,67 @@
 </head>
 
 <body>
-    <h1>Oskar's To-Do List</h1>
+    <h1>! Oskar's To-Do List !</h1>
+    <img src="clown.png" alt="most feared clown" />
     <form id="todoForm">
-        <input type="text" id="inputTask" placeholder="Add task to to-do list" required />
+        <input type="text" id="inputTask" placeholder="Write your To-Do List!" required />
         <button type="submit">Add Task</button>
     </form>
     <ul id="listOfTasks"></ul>
+    
+    <style>
+        body {
+        background-color: #4cbb19d2;
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: algerian;
+        position: relative;
+        }
+        h1 {
+            color: #000000;
+            margin-bottom: 40px;
+            font-family: algerian;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        button {
+        padding: 10px 15px;
+        font-size: 16px;
+        margin-left: 5px;
+        border: none;
+        border-radius: 4px;
+        background-color: #141313;
+        color: white;
+        cursor: pointer; 
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            width: 280px
+        }
+        li {
+        background-color: #559c3f;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #000000;
+        border-radius: 4px;
+        text-align: center;   
+        }
+        img {
+            position: absolute;
+            bottom: 50px;
+            right: 480px;
+            max-width: 400px;
+            height: auto;
+        }
 
+
+    </style>
 
     <script src="backend.mjs" type="module"></script>
 </body>
