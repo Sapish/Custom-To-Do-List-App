@@ -66,7 +66,39 @@ function addTask(event) {
     todoForm.reset();
 }
 
+function toggleTaskCompletion(event) {
+    const listItem = event.target.parentElement;
+    const taskId = listItem.dataset.id;
+    const task = task.find(t => t.id === taskId);
+    if (task) {
+        task.completed = event.target.checked;
+        saveTasks();
+        renderTasks();
+    }
+}
 
+function editTask(event) {
+    const listItem = event.target.parentElement;
+    const taskId = listItem.dataset.id;
+    const task = tasks.find(t => t.id === taskId);
+    if (!task) return;
 
+    const newText = prompt("Edit task: ", task.text);
+    if (newText !== null && newText.trim() !== "") {
+        task.text = newText.trim();
+        saveTasks();
+        renderTasks();
+    }
+}
+
+function deleteTask(event) {
+    const listItem = event.target.parentElement;
+    const taskId = listItem.dataset.id;
+    tasks = tasks.filter(t => t.id !== taskId);
+    saveTasks();
+    renderTasks();
+}
+
+todoForm.addEventListener("submit", addTask);
 loadTasks();
 renderTasks();
